@@ -1,0 +1,35 @@
+# Rules reminder:
+# DEBUG < INFO < WARN < ERROR < FATAL
+
+# Global logging configuration
+log4j.rootLogger=INFO, stdout, E
+
+## Console output...
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target = System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%5p %d : %m%n
+
+## Console ERROR
+log4j.appender.E=org.apache.log4j.RollingFileAppender
+log4j.appender.E.File=../logs/CokeMall/mall_error.log
+log4j.appender.E.Append = true
+log4j.appender.E.Threshold = ERROR
+log4j.appender.E.Encoding=UTF-8
+log4j.appender.E.MaxFileSize=1024KB
+log4j.appender.E.MaxBackupIndex=10
+log4j.appender.E.layout=org.apache.log4j.PatternLayout
+log4j.appender.E.layout.ConversionPattern=%-d{yyyy-MM-dd   HH:mm:ss}   [%c]-[%p]   %m%n
+
+# Console mybatis
+log4j.logger.com.ibatis = stdout  
+log4j.logger.com.ibatis.common.jdbc.SimpleDataSource = stdout  
+log4j.logger.com.ibatis.common.jdbc.ScriptRunner = stdout  
+log4j.logger.com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate = stdout  
+
+log4j.logger.java.sql.Connection = stdout
+log4j.logger.java.sql.Statement = stdout
+log4j.logger.java.sql.PreparedStatement = stdout
+log4j.logger.java.sql.ResultSet =stdout
+
+log4j.logger.java.sql = stdout
